@@ -24,11 +24,13 @@ def upload_csv():
     stream.seek(0)
 
     t0 = time.perf_counter_ns()
+
     with current_app.pg_pool.connection() as conn, conn.cursor() as cur:
-        cur.copy_expert(
+        cur.copy(
             "COPY records FROM STDIN WITH CSV HEADER",
-            stream
+            stream                 # ← positional second arg
         )
+
     latency_ms = (time.perf_counter_ns() - t0) / 1_000_000
 
     log.info("insert_ms=%0.2f rows=100k", latency_ms)
