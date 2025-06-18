@@ -1,1 +1,13 @@
-__pycache__/ .env pgdata/ certbot-etc/
+# Python artefacts
+__pycache__/
+*.py[cod]
+.venv/
+
+# Secrets & local state
+.env
+pgdata/
+certbot-etc/
+
+# Editors / OS
+*.swp
+.DS_Store
