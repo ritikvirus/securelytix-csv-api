@@ -21,7 +21,7 @@ def run():
             for path in sql_files:
                 logging.info("Applying %s ...", path.name)
                 conn.execute(path.read_text())
-    logging.info("✅  Migrations complete.")
+    logging.info("Migrations complete.")
 
 if __name__ == "__main__":
     run()
