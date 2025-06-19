@@ -128,23 +128,29 @@ Client ──► Nginx (TLS) ──► Gunicorn + Flask ──► PostgreSQL
 1. **Build the API image**:
 
    ```bash
+   docker compose down --remove-orphans
+   docker compose up -d --build api     
+
+   ```
+
+   ```bash
    docker compose build api
    ```
 
-2. **Start all services**:
+3. **Start all services**:
 
    ```bash
    docker compose up -d
    ```
 
-3. **Verify**:
+4. **Verify**:
 
    ```bash
    docker compose ps
    curl -I http://localhost/upload  # should return 405 (endpoint exists)
    ```
 
-4. **Stop services**:
+5. **Stop services**:
 
    ```bash
    docker compose down
